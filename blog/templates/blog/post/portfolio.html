@@ -1,0 +1,107 @@
+{% extends "blog/base.html" %}
+{% block title %}Portfolio{% endblock %}
+{% block content %}
+<body class="bg-black text-white">
+
+    <section class="min-h-screen lg:h-screen flex flex-col lg:flex-row justify-between items-center p-6 sm:p-8 lg:p-12">
+
+        <!-- Left side: Text and Buttons -->
+        <div class="text-left w-full lg:w-1/2 animate__animated animate__fadeInLeft px-4 sm:px-8"> 
+            <p class="pt-20 sm:pt-12 text-black-400 mb-2">HELLO!</p>
+            <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-black-100 tracking-wide drop-shadow-lg">
+                I'm <span class="text-blue-500">{{portfolio.name}}</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl mt-4">Back-end Developer</p>
+            <p>{{portfolio.description}}</p>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                <a href="{% url "blog:contact" %}" class="bg-blue-500 text-white font-semibold text-sm py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">Hire Me</a>
+                <a href="#works" class="bg-gray-800 text-white font-semibold text-sm py-2 px-4 rounded-full hover:bg-gray-700 transition duration-300">My Works</a>
+            </div>
+        </div>
+
+        <!-- Right side: Image -->
+        <div class="pt-10 sm:pt-12 lg:pt-35 w-full lg:w-1/2 mt-10 lg:mt-0 animate__animated animate__fadeInRight flex justify-center lg:justify-end">
+    {% if portfolio.image %}
+        <img src="{{ portfolio.image.url }}" alt="Profile Image" class="rounded-full border-4 border-blue-500 shadow-lg object-cover w-50 h-50 sm:w-48 sm:h-50 lg:w-96 lg:h-96">
+    {% else %}
+        <p class="text-center text-gray-400 italic">No image available for this post.</p>
+    {% endif %}
+</div>
+
+    </section>
+
+    <section id="works" class="min-h-screen flex flex-col justify-center items-center bg-gray-900 p-8">
+        <h2 class="text-3xl text-yellow-500 animate__animated animate__fadeIn">Check out my projects on GitHub!</h2>
+        <a href="https://github.com/sktzamesa?tab=projects" class="text-xl text-white mt-4">Click Me!</a>
+        <div class="mt-4 text-center">
+            <p class="text-gray-400">Stay tuned for amazing work.</p>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+    <div class="max-w-3xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
+        <div class="p-10 space-y-8">
+            <!-- Title -->
+            <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-8 tracking-wide">My Experiences</h2>
+
+            <!-- Python -->
+            <div class="flex items-start space-x-4 hover:bg-gray-100 p-4 rounded-lg transition duration-200 ease-in-out">
+                <img src="https://brandslogos.com/wp-content/uploads/images/large/python-logo.png" alt="Python" class="w-14 h-14 rounded-md shadow-sm transform transition duration-200 hover:scale-105">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-700">Python</h3>
+                    <p class="text-gray-600">Game development, web development, and machine learning.</p>
+                </div>
+            </div>
+
+            <!-- Django -->
+            <div class="flex items-start space-x-4 hover:bg-gray-100 p-4 rounded-lg transition duration-200 ease-in-out">
+                <img src="https://static.djangoproject.com/img/logos/django-logo-negative.1d528e2cb5fb.png" alt="Django" class="w-14 h-14 rounded-md shadow-sm transform transition duration-200 hover:scale-105">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-700">Django</h3>
+                    <p class="text-gray-600">Django for batteries included in building web development</p>
+                </div>
+            </div>
+
+            <!-- Front-end Frameworks and Designs -->
+            <div class="flex items-start space-x-4 hover:bg-gray-100 p-4 rounded-lg transition duration-200 ease-in-out">
+                <img src="https://d3mxt5v3yxgcsr.cloudfront.net/courses/15177/course_15177_image.jpg" alt="Front-end Frameworks" class="w-14 h-14 rounded-md shadow-sm transform transition duration-200 hover:scale-105">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-700">Front-end Frameworks and Design</h3>
+                    <p class="text-gray-600">HTML, CSS, Tailwind CSS, JavaScript, and Svelte.</p>
+                </div>
+            </div>
+
+            <!-- Docker -->
+            <div class="flex items-start space-x-4 hover:bg-gray-100 p-4 rounded-lg transition duration-200 ease-in-out">
+                <img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=publish" alt="Docker" class="w-14 h-14 rounded-md shadow-sm transform transition duration-200 hover:scale-105">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-700">Docker</h3>
+                    <p class="text-gray-600">Application containerization.</p>
+                </div>
+            </div>
+
+            <!-- GitHub -->
+            <div class="flex items-start space-x-4 hover:bg-gray-100 p-4 rounded-lg transition duration-200 ease-in-out">
+                <img src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Logo.png" alt="GitHub" class="w-14 h-14 rounded-md shadow-sm transform transition duration-200 hover:scale-105">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-700">GitHub</h3>
+                    <p class="text-gray-600">Continuous integration and collaboration.</p>
+                </div>
+            </div>
+
+            <!-- Databases -->
+            <div class="flex items-start space-x-4 hover:bg-gray-100 p-4 rounded-lg transition duration-200 ease-in-out">
+                <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/ffc47c45-e0ba-4c50-8684-9ab688fad82f.png?auto=format&q=50&fit=fill" alt="Databases" class="w-14 h-14 rounded-md shadow-sm transform transition duration-200 hover:scale-105">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-700">Databases</h3>
+                    <p class="text-gray-600">SQLite, MySQL, and PostgreSQL.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+{% endblock %}

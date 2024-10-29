@@ -1,0 +1,25 @@
+<div class="flex flex-wrap justify-center items-center my-4">
+  <span class="flex space-x-2">
+    {% if page.has_previous %}
+      <a href="?page=1" class="px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition duration-300 ease-in-out text-sm">« First</a>
+      <a href="?page={{ page.previous_page_number }}" class="px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition duration-300 ease-in-out text-sm">Previous</a>
+    {% endif %}
+  </span>
+  
+  <span class="flex space-x-2">
+    {% for num in page.paginator.page_range %}
+      {% if num == page.number %}
+        <span class="px-3 py-2 bg-yellow-400 text-gray-800 rounded-md font-bold text-sm">{{ num }}</span>
+      {% elif num > page.number|add:-3 and num < page.number|add:3 %}
+        <a href="?page={{ num }}" class="px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition duration-300 ease-in-out text-sm">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+  </span>
+  
+  <span class="flex space-x-3">
+    {% if page.has_next %}
+      <a href="?page={{ page.next_page_number }}" class="px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition duration-300 ease-in-out text-sm">Next</a>
+      <a href="?page={{ page.paginator.num_pages }}" class="px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition duration-300 ease-in-out text-sm">Last »</a>
+    {% endif %}
+  </span>
+</div>

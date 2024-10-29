@@ -1,0 +1,68 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+{% block title %}Search{% endblock title %}
+
+{% block content %}
+<div class="pt-20 container mx-auto px-4 py-8">
+
+  {% if query %}
+    <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">Posts containing "{{ query }}"</h1>
+
+    {% with results.count as total_results %}
+    <h3 class="text-lg text-gray-600 mb-4 text-center">
+      Found {{ total_results }} result{{ total_results|pluralize }} for "{{ query }}"
+    </h3>
+    {% endwith %}
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for post in results %}
+      <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 duration-300 ease-in-out">
+        {% if post.photo %}
+<img src="{{ post.photo.url }}" alt="{{ post.title }}" class="rounded-t-lg object-cover h-64 w-full mb-4 transition-transform duration-300 ease-in-out hover:scale-105">
+{% else %}
+<p class="text-center text-gray-400 italic">No image available for this post.</p>
+{% endif %}
+        <p class="text-2xl font-bold text-blue-800 mb-2 leading-snug">
+            <a href="{{ post.get_absolute_url }}" class="no-underline hover:underline hover:text-blue-600 transition-colors">
+                {{ post.title }}
+            </a>
+        </p>
+        <p class="tags text-sm text-blue-600 mb-3">
+            Tags:
+            {% for tag in post.tags.all %}
+            <a href="{% url 'blog:post_list_by_tag' tag.slug %}" class="hover:text-blue-800 transition-colors">
+                {{ tag.name }}
+            </a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        </h4>
+        <p class="text-gray-700 mt-2">
+          {{ post.body|markdown|truncatewords_html:12 }}
+        </p>
+      </div>
+      {% empty %}
+      <p class="text-red-500 text-center">There are no query results.</p>
+      {% endfor %}
+    </div>
+
+    <div class="mt-6 text-center">
+      <a href="{% url 'blog:post_search' %}" class="text-blue-600 hover:underline">Search again</a>
+    </div>
+  
+  {% else %}
+    <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">Search for Posts</h1>
+    <form method="get" class="space-y-6 max-w-lg mx-auto">
+      <div class="flex space-x-4 items-center">
+        <div class="flex-grow">
+          {{ form.query }}
+
+          <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300">
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
+  {% endif %}
+
+</div>
+{% endblock %}

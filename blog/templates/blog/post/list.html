@@ -1,0 +1,125 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+{% block title %}Blog{% endblock %}
+{% block content %}
+<h1 class="pt-24 text-6xl font-bold text-blue-600 text-center mb-16 tracking-wide drop-shadow-md animate-fade-in border-none">
+  Welcome to Zamesa's Blog
+</h1>
+
+{% if tag %}
+<h2 class="text-2xl text-center text-gray-500 mb-6 italic">Posts tagged with "<span class="font-semibold">{{ tag.name }}</span>"</h2>
+{% endif %}
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for post in posts %}
+    <div class="p-6 bg-white bg-opacity-90 shadow-xl rounded-lg hover:shadow-2xl transform transition-transform hover:-translate-y-2 duration-300 ease-in-out hover:bg-blue-50">
+        
+        <!-- Image section -->
+        {% if post.photo %}
+<img src="{{ post.photo.url }}" alt="{{ post.title }}" class="rounded-t-lg object-cover h-64 w-full mb-4 transition-transform duration-300 ease-in-out hover:scale-105">
+{% else %}
+<p class="text-center text-gray-400 italic">No image available for this post.</p>
+{% endif %}
+
+        
+        <!-- Blog Post Title -->
+        <p class="text-2xl font-bold text-blue-800 mb-2 leading-snug">
+            <a href="{{ post.get_absolute_url }}" class="no-underline hover:underline hover:text-blue-600 transition-colors">
+                {{ post.title }}
+            </a>
+        </p>
+
+        <!-- Tags section -->
+        <p class="tags text-sm text-blue-600 mb-3">
+            Tags:
+            {% for tag in post.tags.all %}
+            <a href="{% url 'blog:post_list_by_tag' tag.slug %}" class="hover:text-blue-800 transition-colors">
+                {{ tag.name }}
+            </a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+
+        <!-- Meta information -->
+        <p class="text-sm text-gray-500 mb-4">
+            Published on <span class="font-semibold">{{ post.publish|date:"F d, Y" }}</span> by <span class="font-semibold">{{ post.author }}</span>
+        </p>
+
+        <!-- Post body preview -->
+        <p class="text-gray-700 leading-relaxed mb-6">{{ post.body|markdown|truncatewords_html:30 }}</p>
+
+        <!-- Read more link -->
+        <div class="mt-4">
+            <a href="{{ post.get_absolute_url }}" class="text-blue-600 font-semibold hover:underline hover:text-blue-800 transition-colors">Read more</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div class="mt-12">
+    {% include "pagination.html" with page=posts %}
+</div>
+
+
+<!-- Main Service Section -->
+
+<div class="services-section bg-gray-900 py-16"> <!-- Updated background color and padding -->
+    <div class="container mx-auto text-center">
+        <h1 class="text-5xl font-bold text-blue-300 text-center mb-12 tracking-wide drop-shadow-lg animate-fade-in border-none">
+  Check out the latest feeds on my blog and features
+</h1>
+
+
+
+        <!-- Service Cards Section -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+
+            <!-- Card 1: Blog Overview -->
+            <div class="service-card bg-white rounded-lg shadow-lg p-6 transition-transform duration-300 ease-in-out hover:transform hover:-translate-y-2 border border-gray-200 hover:border-blue-600">
+                <div class="mb-4">
+                    <img src="https://static.vecteezy.com/system/resources/previews/020/599/345/original/insight-icon-in-flat-style-bulb-illustration-on-black-round-background-with-long-shadow-idea-business-concept-vector.jpg" alt="Blog Icon" class="w-16 mx-auto">
+                </div>
+                <h3 class="text-xl font-bold text-blue-600 mb-4">Blogging Insights</h3>
+                <p class="text-gray-700">Discover insights on blog creation and post your thoughts. I've written <span class="font-bold">{% total_posts %}</span> posts so far.</p>
+                <p class="mt-4">
+                    <a href="{% url 'blog:post_feed' %}" class="text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out">
+                        Subscribe to my RSS feed
+                    </a>
+                </p>
+            </div>
+
+            <!-- Card 2: Latest Posts -->
+            <div class="service-card bg-white rounded-lg shadow-lg p-6 transition-transform duration-300 ease-in-out hover:transform hover:-translate-y-2 border border-gray-200 hover:border-blue-600">
+                <div class="mb-4">
+                    <img src="https://png.pngtree.com/png-clipart/20220222/original/pngtree-new-post-icon-giphy-instagram-png-image_7301792.png" alt="Latest Posts Icon" class="w-16 mx-auto">
+                </div>
+                <h3 class="text-xl font-bold text-blue-800 mb-4">Latest Posts</h3>
+                <div class="text-blue-700">
+                    {% show_latest_posts 5 %}
+                </div>
+            </div>
+
+            <!-- Card 3: Most Commented -->
+            <div class="service-card bg-white rounded-lg shadow-lg p-6 transition-transform duration-300 ease-in-out hover:transform hover:-translate-y-2 border border-gray-200 hover:border-blue-600">
+                <div class="mb-4">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.FeJxc2JC5hAB5we-HLyaKgHaHa&pid=Api&P=0&h=180" alt="Most Commented Icon" class="w-16 mx-auto">
+                </div>
+                <h3 class="text-xl font-bold text-blue-800 mb-4">Most Commented Posts</h3>
+                <ul class="space-y-3">
+                    {% get_most_commented_posts as most_commented_posts %}
+                    {% for post in most_commented_posts %}
+                    <li class="border-b pb-2">
+                        <a href="{{ post.get_absolute_url }}" class="block text-base sm:text-lg font-medium text-blue-700 hover:text-blue-700 hover:underline transition duration-300 ease-in-out">
+                            {{ post.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
