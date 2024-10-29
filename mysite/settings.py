@@ -37,7 +37,7 @@ SECRET_KEY = "django-insecure-%9z)gqu@_ct+s-9%dl$#p$g2g+-$d*e!oo6!2u^!w^g4gq=g#(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['zamesa.com']
+ALLOWED_HOSTS = ['*']
 SITE_ID = 1
 TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = [
@@ -145,7 +145,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 django_heroku.settings(locals())
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
