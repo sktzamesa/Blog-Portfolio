@@ -2,19 +2,45 @@
 {% block title %} Share a post {% endblock %}
 
 {% block content %}
-	{% if sent %}
-	<h1 class = pt-20>E-mail sucessfully sent</h1>
-	<p>
-		"{{post.title}}" was successfully sent to {{ form.cleaned_data.to }}
-	</p>
-	{% else %}
-	<div class="pt-20">
-	<h1>"Share {{post.title}}" by {{post.author}}</h1>
-	<form method = "post">
-		{{form.as_p}}
-		{% csrf_token %}
-		<input type = "submit" value = "send e-mail">
-	</form>
- </div>
-	{% endif %}
-	{% endblock %}
+    <div class="container mx-auto pt-20 px-4">
+        {% if sent %}
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md">
+                <h1 class="text-2xl font-bold mb-2">E-mail Successfully Sent</h1>
+                <p class="text-lg">
+                    "{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}
+                </p>
+            </div>
+        {% else %}
+            <div class="bg-white rounded-lg shadow-lg p-8 max-w-lg mx-auto">
+                <h1 class="text-3xl font-bold mb-6 text-gray-800">Share "{{ post.title }}" by {{ post.author }}</h1>
+                <form method="post" class="space-y-6">
+                    {% csrf_token %}
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" for="name">Name:</label>
+                        {{ form.name }}
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" for="email">Email:</label>
+                        {{ form.email }}
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" for="to">To:</label>
+                        {{ form.to }}
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" for="comment">Comment:</label>
+                        {{ form.comment }}
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                        Send E-mail
+                    </button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
