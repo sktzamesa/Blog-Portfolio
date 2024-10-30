@@ -5,28 +5,9 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <link>
     {% tailwind_css %}
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-    <style>
-/* Transition for navbar links */
-.nav-link {
-    transition: color 0.3s ease;
-}
-
-/* Change link color on hover */
-.nav-link:hover {
-    color: #1d4ed8; /* Change to your desired hover color (blue-700 in Tailwind) */
-}
-
-/* Ensure the navbar background remains white */
-nav {
-    background-color: white; /* Keep the navbar background white */
-}
-
-
-    </style>
 <body class="bg-gray-100">
 
     <!-- Navbar -->
@@ -86,7 +67,6 @@ nav {
         
     </script>
 
-    <div>{% block content %}{% endblock %}</div>
-
+{% block content %}{% endblock %}
 </body>
 </html>
