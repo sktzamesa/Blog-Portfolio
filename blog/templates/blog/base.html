@@ -7,6 +7,7 @@
     <title>{% block title %}{% endblock %}</title>
     {% tailwind_css %}
     <script src="https://cdn.tailwindcss.com"></script>
+     <script src="{% static 'js/menu-toggle.js' %}"></script>
 </head>
 <body class="bg-gray-100">
 
@@ -59,14 +60,7 @@
         </div>
     </nav>
 
-    <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-        
-    </script>
-
 {% block content %}{% endblock %}
+
 </body>
 </html>
