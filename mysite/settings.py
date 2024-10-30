@@ -37,7 +37,7 @@ SECRET_KEY = "django-insecure-%9z)gqu@_ct+s-9%dl$#p$g2g+-$d*e!oo6!2u^!w^g4gq=g#(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['zamesa.com']
+ALLOWED_HOSTS = ['zamesa.com', 'www.zamesa.com', 'your-heroku-app.herokuapp.com']
 SITE_ID = 1
 TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = [
