@@ -216,7 +216,11 @@ def contact(request):
         }
 
     )
-
+def skills(request):
+    return render(
+        request,
+        'blog/post/skill.html',
+    )
 
 
 

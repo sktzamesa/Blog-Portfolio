@@ -2,10 +2,10 @@
 {% block title %}About{% endblock %}
 {% block content %}
 <div class="container mx-auto py-12 min-h-screen">
-    <div class="text-gray-900 p-8 flex flex-col lg:flex-row">
+    <div class="text-gray-900 p-8 flex flex-col lg:flex-row opacity-0 animate-fadeIn">
         {% if about.photo %}
-        <div class="lg:w-1/3 w-full pr-0 lg:pr-8 mb-4 lg:mb-0">
-            <img src="{{about.photo.url}}" alt="Your Image" class="w-full">
+        <div class="lg:w-1/3 w-full pr-0 lg:pr-8 mb-4 lg:mb-0 transition-transform transform hover:scale-105">
+            <img src="{{ about.photo.url }}" alt="Your Image" class="w-full h-auto rounded-lg shadow-md">
         </div>
         {% else %}
         <p class="text-center text-gray-500 mt-4">No image available for this post.</p>
@@ -13,34 +13,64 @@
 
         <!-- Content Section -->
         <div class="lg:w-2/3 w-full">
-            <h1 class="text-4xl font-bold mb-4 text-blue-600">About Me</h1>
-            <p class="text-gray-600 mb-6">A person that likes a lot of Django and loves to watch DjangoCon.I started learning python in the year 2022 as my first using it on game development, my first game was the simulated game and then i discovered Django as my second discovered as i really like using it because it follows the MVC architecture.Django offers batteries-included. Python is my favorite language as it provide readability and its a field of Data Science.</p>
+            <h1 class="text-4xl font-bold mb-4 text-blue-600 animate-slideIn">About Me</h1>
+            <p class="text-gray-600 mb-6 animate-fadeIn">A person that likes a lot of Django and loves to watch DjangoCon. I started learning Python in 2022 as my first language, using it in game development. My first game was a simulation game, and then I discovered Django, which I really enjoy because it follows the MVC architecture. Django offers batteries-included. Python is my favorite language due to its readability and its relevance in the field of Data Science.</p>
 
-            <div class="mb-2">
-                <span class="font-semibold text-gray-700">Name: </span>{{about.name}}
+            <!-- Download CV Button -->
+            <div class="mb-4 text-center">
+                <a href="{{ portfolio.cv.url }}" class="bg-green-500 text-white font-semibold text-lg py-2 px-6 rounded-full hover:bg-green-700 transition duration-300" download>Download CV</a>
             </div>
-            <div class="mb-2">
+
+            <div class="mb-2 flex items-center animate-fadeIn">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.mxr1EYNrpnRAXZz_aSslMwHaHa&pid=Api&P=0&h=180" alt="Name Icon" class="w-5 h-5 mr-2">
+                <span class="font-semibold text-gray-700">Name: </span>{{ about.name }}
+            </div>
+            <div class="mb-2 flex items-center animate-fadeIn">
+                <img src="https://vectorified.com/images/date-of-birth-icon-12.png" alt="Birth Icon" class="w-5 h-5 mr-2">
                 <span class="font-semibold text-gray-700">Date of Birth: </span> September 07, 2003
             </div>
-            <div class="mb-2">
-                <span class="font-semibold text-gray-700">Address: </span>{{about.address}}
+            <div class="mb-2 flex items-center animate-fadeIn">
+                <img src="http://getdrawings.com/vectors/address-icon-vector-3.png" alt="Address Icon" class="w-5 h-5 mr-2">
+                <span class="font-semibold text-gray-700">Address: </span>{{ about.address }}
             </div>
-            <div class="mb-2">
-                <span class="font-semibold text-gray-700">Zip code: </span>{{about.zip_code}}
+            <div class="mb-2 flex items-center animate-fadeIn">
+                <img src="https://pluspng.com/img-png/zip-code-png-zip-code-filled-icon-1600.png" alt="Zip Icon" class="w-5 h-5 mr-2">
+                <span class="font-semibold text-gray-700">Zip code: </span>{{ about.zip_code }}
             </div>
-            <div class="mb-2">
+            <div class="mb-2 flex items-center animate-fadeIn">
+                <img src="https://freepngimg.com/download/symbol/64802-icons-symbol-computer-mail-email-icon.png" alt="Email Icon" class="w-5 h-5 mr-2">
                 <span class="font-semibold text-gray-700">Email: </span> qzamesa@gmail.com
             </div>
-            <div class="mb-2">
-                <span class="font-semibold text-gray-700">Phone: </span> {{about.phone}}
+            <div class="mb-2 flex items-center animate-fadeIn">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.XZD6-a9dWs-PvpbK60qdzQHaGG&pid=Api&P=0&h=180" alt="Phone Icon" class="w-5 h-5 mr-2">
+                <span class="font-semibold text-gray-700">Phone: </span>{{ about.phone }}
             </div>
 
             <!-- Projects Completed -->
-            <div class="mt-6 text-blue-600 text-lg font-bold">
+            <div class="mt-6 text-blue-600 text-lg font-bold animate-fadeIn">
                 2 Projects Completed
             </div>
         </div>
     </div>
 </div>
 
+<style>
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slideIn {
+    animation: slideIn 0.5s forwards;
+}
+</style>
 {% endblock %}

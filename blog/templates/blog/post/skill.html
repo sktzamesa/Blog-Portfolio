@@ -1,0 +1,155 @@
+{% extends "blog/base.html" %} 
+{% block title %}Skills{% endblock %}
+{% block content %}
+<style>
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .experience-card {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        opacity: 0; /* Initially hidden */
+        animation: fadeInUp 0.6s ease forwards; /* Trigger animation on load */
+    }
+
+    /* Add staggered delay for each card */
+    .experience-card:nth-child(1) { animation-delay: 0.2s; }
+    .experience-card:nth-child(2) { animation-delay: 0.4s; }
+    .experience-card:nth-child(3) { animation-delay: 0.6s; }
+    .experience-card:nth-child(4) { animation-delay: 0.8s; }
+    .experience-card:nth-child(5) { animation-delay: 1s; }
+    .experience-card:nth-child(6) { animation-delay: 1.2s; }
+
+    .experience-image {
+        display: block;
+        margin: 0 auto 10px;
+        transition: transform 0.3s ease;
+        width: 70px; /* Increased size for better visibility */
+        height: 70px; /* Increased size for better visibility */
+        border-radius: 8px;
+    }
+
+    .experience-image:hover {
+        transform: scale(1.1); /* Slight scale-up on hover */
+    }
+
+    .card-title, .card-description {
+        transition: opacity 0.4s ease;
+        text-align: center;
+    }
+
+    .experience-container {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+        .experience-container {
+            grid-template-columns: repeat(2, 1fr); /* Two columns for small screens */
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .experience-container {
+            grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
+        }
+    }
+
+    /* Section styling */
+    .projects-section {
+        min-height: 60vh;
+        background-color: #1a202c; /* Dark background */
+        color: #f7fafc; /* Light text */
+        padding: 4rem 1rem; /* Responsive padding */
+        text-align: center;
+    }
+
+    .projects-section h2 {
+        font-size: 2rem; /* Adjusted size */
+        margin-bottom: 1rem;
+    }
+
+    .projects-section a {
+        color: #f6e05e; /* Yellow link color */
+        font-size: 1.25rem; /* Slightly larger link */
+        margin-top: 1rem;
+        display: inline-block;
+        text-decoration: underline;
+    }
+
+    .projects-section p {
+        margin-top: 0.5rem;
+        color: #cbd5e0; /* Gray text for the description */
+    }
+</style>
+
+<div class="pt-20 py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-8 tracking-wide">My Experiences</h2>
+        <div class="experience-container">
+            <!-- Python -->
+            <div class="experience-card">
+                <img src="https://brandslogos.com/wp-content/uploads/images/large/python-logo.png" alt="Python logo" class="experience-image">
+                <h3 class="card-title">Python</h3>
+                <p class="card-description">Game development, web development, and machine learning.</p>
+            </div>
+
+            <!-- Django -->
+            <div class="experience-card">
+                <img src="https://static.djangoproject.com/img/logos/django-logo-negative.1d528e2cb5fb.png" alt="Django logo" class="experience-image">
+                <h3 class="card-title">Django</h3>
+                <p class="card-description">Django for batteries included in building web applications.</p>
+            </div>
+
+            <!-- Front-end Frameworks and Designs -->
+            <div class="experience-card">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.Y-BbFmqRsIQWzX5BWC4mNQAAAA&pid=Api&P=0&h=180" class="experience-image">
+                <h3 class="card-title">Front-end Frameworks and Design</h3>
+                <p class="card-description">HTML, CSS, Tailwind CSS, JavaScript, and Svelte.</p>
+            </div>
+
+            <!-- Docker -->
+            <div class="experience-card">
+                <img src="https://mma.prnewswire.com/media/776689/New_Docker_logo_Logo.jpg?p=publish" alt="Docker logo" class="experience-image">
+                <h3 class="card-title">Docker</h3>
+                <p class="card-description">Application containerization for efficient development and deployment.</p>
+            </div>
+
+            <!-- GitHub -->
+            <div class="experience-card">
+                <img src="https://pngimg.com/uploads/github/github_PNG40.png" alt="GitHub logo" class="experience-image">
+                <h3 class="card-title">GitHub</h3>
+                <p class="card-description">Continuous integration and collaboration for version control.</p>
+            </div>
+
+            <!-- Databases -->
+            <div class="experience-card">
+                <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/ffc47c45-e0ba-4c50-8684-9ab688fad82f.png?auto=format&q=50&fit=fill" alt="Databases" class="experience-image">
+                <h3 class="card-title">Databases</h3>
+                <p class="card-description">SQLite, MySQL, and PostgreSQL for data management.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="works" class="projects-section">
+    <h2>Check out my projects on GitHub!</h2>
+    <a href="https://github.com/sktzamesa?tab=projects">Click Me!</a>
+    <div class="mt-4">
+        <p>Stay tuned for amazing work.</p>
+    </div>
+</section>
+    
+{% endblock %}

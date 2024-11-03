@@ -2,7 +2,52 @@
 {% load blog_tags %}
 {% block title %}Blog{% endblock %}
 {% block content %}
+<style>
+    /* Keyframe animations */
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    /* Animation classes */
+    .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease forwards;
+        opacity: 0; /* Ensures that it starts invisible */
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.6s ease forwards;
+        opacity: 0;
+    }
+
+    .animate-fade-in-delay {
+        animation: fadeIn 0.8s ease forwards;
+        opacity: 0;
+        animation-delay: 0.3s; /* Delayed fade-in */
+    }
+
+    /* Delayed fade-in for multiple comments */
+    .animate-fade-in-comment {
+        animation: fadeIn 0.6s ease forwards;
+        opacity: 0;
+        animation-delay: calc(var(--comment-index) * 0.2s); /* Staggered delay for each comment */
+    }
+</style>
 <!-- Post Title and Meta Info -->
 <div class="pt-20 sm:pt-22 px-5 max-w-4xl mx-auto"> 
     <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mt-4 sm:mt-6 text-center text-gray-900 animate-fade-in-up">

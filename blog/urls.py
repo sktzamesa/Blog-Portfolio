@@ -15,4 +15,5 @@ urlpatterns=[
     path('feed/',LatestPostsFeeds(),name='post_feed'),
     path('about/',views.about,name='about'),
     path('contact/',views.contact,name='contact'),
+    path('skills/',views.skills,name='skills')
 ]
