@@ -95,6 +95,7 @@ class About(models.Model):
         upload_to='user/%Y/%m/%d',
         blank=True
     )
+    cv = models.FileField(upload_to='cvs/')
 
     class Meta:
         ordering = ['created_at']

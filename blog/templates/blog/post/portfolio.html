@@ -1,4 +1,4 @@
-{% extends "blog/base.html" %}
+{% extends "blog/base.html" %} 
 {% block title %}Portfolio{% endblock %}
 {% block content %}
 <body class="bg-black text-white">
@@ -6,25 +6,32 @@
     <section class="min-h-screen lg:h-screen flex flex-col lg:flex-row justify-between items-center p-6 sm:p-8 lg:p-12">
 
         <!-- Left side: Text and Buttons -->
-        <div class="text-left w-full lg:w-1/2 px-4 sm:px-8"> 
+         <div class="text-left w-full lg:w-1/2 px-4 sm:px-8"> 
             <p class="pt-20 sm:pt-12 text-black-400 mb-2">HELLO!</p>
             <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-black-100 tracking-wide drop-shadow-lg">
                 I'm <span class="text-blue-500">{{portfolio.name}}</span>
             </h1>
 
-            <p class="text-lg sm:text-xl mt-4">Back-end Developer</p>
-            <p>{{portfolio.description}}</p>
+            <!-- Image displayed below the name only on mobile -->
+            {% if portfolio.image %}
+                <div class="mt-4 flex justify-center lg:justify-start lg:hidden">
+                    <img src="{{ portfolio.image.url }}" alt="Profile Image" class="rounded-full border-4 border-blue-500 shadow-lg w-40 h-40 sm:w-48 sm:h-48 object-cover">
+                </div>
+            {% endif %}
 
-            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <p class="text-lg sm:text-xl mt-4">Back-end Developer</p>
+            <p class="mt-2">{{portfolio.description}}</p>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a href="{% url "blog:contact" %}" class="bg-blue-500 text-white font-semibold text-sm py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">Hire Me</a>
                 <a href="{% url "blog:skills" %}" class="bg-gray-800 text-white font-semibold text-sm py-2 px-4 rounded-full hover:bg-gray-700 transition duration-300">My Works</a>
             </div>
         </div>
 
-        <!-- Right side: Image -->
-        <div class="pt-10 sm:pt-12 lg:pt-35 w-full lg:w-1/2 mt-10 lg:mt-0 flex justify-center lg:justify-end">
+        <!-- Right side: Image for desktop view -->
+        <div class="hidden lg:flex lg:w-1/2 mt-10 lg:mt-0 justify-center lg:justify-end">
             {% if portfolio.image %}
-                <img src="{{ portfolio.image.url }}" alt="Profile Image" class="rounded-full border-4 border-blue-500 shadow-lg t-cover w-50 h-50 sm:w-48 sm:h-50 lg:w-96 lg:h-96">
+                <img src="{{ portfolio.image.url }}" alt="Profile Image" class="rounded-full border-4 border-blue-500 shadow-lg w-50 h-50 sm:w-48 sm:h-50 lg:w-96 lg:h-96 object-cover">
             {% else %}
                 <p class="text-center text-gray-400 italic">No image available for this post.</p>
             {% endif %}
