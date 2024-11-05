@@ -1,12 +1,36 @@
 from django import forms
 from .models import Comment
 class EmailPostForms(forms.Form):
-    name = forms.CharField(max_length=25)
-    email = forms.EmailField()
-    to = forms.EmailField()
+    name = forms.CharField(
+        max_length=25,
+        label="Your Name",
+        widget=forms.TextInput(attrs={
+            'class': 'w-full p-2 border rounded',
+            'placeholder': 'Enter your name',
+        })
+    )
+    email = forms.EmailField(
+        label="Your Email",
+        widget=forms.EmailInput(attrs={
+            'class': 'w-full p-2 border rounded',
+            'placeholder': 'Enter your email',
+        })
+    )
+    to = forms.EmailField(
+        label="Recipient's Email",
+        widget=forms.EmailInput(attrs={
+            'class': 'w-full p-2 border rounded',
+            'placeholder': 'Enter recipient’s email',
+        })
+    )
     comment = forms.CharField(
         required=False,
-        widget=forms.Textarea
+        label="Comment",
+        widget=forms.Textarea(attrs={
+            'class': 'w-full p-2 border rounded',
+            'placeholder': 'Add a comment (optional)',
+            'rows': 4,
+        })
     )
 class CommentForm(forms.ModelForm):
     class Meta:

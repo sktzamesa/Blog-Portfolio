@@ -4,44 +4,36 @@
 {% block content %}
     <div class="container mx-auto pt-10 px-4">
         {% if sent %}
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md text-center">
-                <h1 class="text-xl sm:text-2xl font-bold mb-2">E-mail Successfully Sent</h1>
-                <p class="text-base sm:text-lg">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md">
+                <h1 class="text-2xl font-bold mb-2">E-mail Successfully Sent</h1>
+                <p class="text-lg">
                     "{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}
                 </p>
             </div>
         {% else %}
-            <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6 lg:p-8 max-w-lg w-full mx-auto">
-                <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 text-gray-800 text-center">Share "{{ post.title }}" by {{ post.author }}</h1>
+            <div class="bg-white rounded-lg shadow-lg p-6 sm:p-8 max-w-lg mx-auto">
+                <h1 class="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">Share "{{ post.title }}" by {{ post.author }}</h1>
                 <form method="post" class="space-y-4 sm:space-y-6">
                     {% csrf_token %}
                     
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1" for="name">Name:</label>
-                        <div class="w-full">
-                            {{ form.name }}
-                        </div>
+                        {{ form.name }}
                     </div>
                     
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1" for="email">Email:</label>
-                        <div class="w-full">
-                            {{ form.email }}
-                        </div>
+                        {{ form.email }}
                     </div>
                     
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1" for="to">To:</label>
-                        <div class="w-full">
-                            {{ form.to }}
-                        </div>
+                        {{ form.to }}
                     </div>
                     
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1" for="comment">Comment:</label>
-                        <div class="w-full">
-                            {{ form.comment }}
-                        </div>
+                        {{ form.comment }}
                     </div>
                     
                     <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
