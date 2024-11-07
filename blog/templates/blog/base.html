@@ -14,25 +14,19 @@
 </head>
 <body class="bg-gray-100">
     <nav class="bg-white shadow-md fixed w-full z-10 top-0">
-        <div class="container mx-auto px-2 sm:px-4 lg:px-8">
-            <div class="flex-layout flex justify-between items-center h-16">
-
-
-                <div class="flex-shrink-0">
-                    <a href="{% url 'blog:post_list' %}" class="text-xl sm:text-2xl font-extrabold text-blue-700 tracking-wide">Zamesa</a>
-
-                </div>
-
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-800 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                </div>
-
-                
-                <div class="hidden md:flex space-x-8 justify-center w-full">
+  <div class="container mx-auto px-2 sm:px-4 lg:px-8">
+    <div class="flex-layout flex justify-between items-center h-16">
+      <div class="flex-shrink-0">
+        <a href="{% url 'blog:post_list' %}" class="text-xl sm:text-2xl font-extrabold text-blue-700 tracking-wide">Zamesa</a>
+      </div>
+      <div class="md:hidden">
+        <button id="mobile-menu-btn" class="text-gray-800 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700">
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+      <div class="hidden md:flex space-x-8 justify-center w-full">
                     <a href="{% url 'blog:post_list' %}" class="nav-link text-gray-800 hover:text-blue-700 font-semibold ">Blog</a>
                     <a href="{% url 'blog:portfolio' %}" class="nav-link text-gray-800 hover:text-blue-700 font-semibold">Home</a>
                     <a href="{% url 'blog:about' %}" class="nav-link text-gray-800 hover:text-blue-700 font-semibold">About</a>
@@ -49,8 +43,8 @@
         </div>
 
         
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-            <div class="flex flex-col">
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg transition duration-300 ease-in-out">
+    <div class="flex flex-col">
                 <a href="{% url 'blog:post_list' %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700">Blog</a>
                 <a href="{% url 'blog:portfolio' %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700">Home</a>
                 <a href="{% url 'blog:about' %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700">About</a>
@@ -64,13 +58,15 @@
         </div>
     </nav>
 
-    <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-        
-    </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuButton = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuButton.addEventListener('click', function () {
+      mobileMenu.classList.toggle('hidden');
+    });
+  });
+</script>
 
 {% block content %}{% endblock %}
 </body>
