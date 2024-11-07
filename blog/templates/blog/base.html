@@ -5,13 +5,22 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
-    {% tailwind_css %}
+    <script src="https://cdn.tailwindcss.com"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/icon.png' %}">
-</head>
+    <style type="text/css">
+        @media (max-width: 768px) {
+  /* Styles for tablets and below */
+}
 
+@media (max-width: 480px) {
+  /* Styles for mobile */
+}
+
+    </style>
+</head>
 <body class="bg-gray-100">
     <nav class="bg-white shadow-md fixed w-full z-10 top-0">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
