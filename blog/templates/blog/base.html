@@ -10,6 +10,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/icon.png' %}">
+    <style type="text/css">
+        /* Basic styles for the navigation */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+}
+
+
+nav a.active {
+  font-weight: bold;
+  color: blue;
+}
+
+    </style>
 </head>
 <body class="bg-gray-100">
     <nav class="bg-white shadow-md fixed w-full z-10 top-0">
@@ -32,11 +58,11 @@
 
                 
                 <div class="hidden md:flex space-x-8 justify-center w-full">
-                    <a href="{% url 'blog:post_list' %}" class="nav-link text-gray-800 hover:text-blue-700 font-semibold ">Blog</a>
+                    <a href="{% url 'blog:post_list' %}" class=" nav-link text-gray-800 hover:text-blue-700 font-semibold nav-link">Blog</a>
                     <a href="{% url 'blog:portfolio' %}" class="nav-link text-gray-800 hover:text-blue-700 font-semibold">Home</a>
                     <a href="{% url 'blog:about' %}" class="nav-link text-gray-800 hover:text-blue-700 font-semibold">About</a>
                     <a href="{% url 'blog:skills' %}" class="nav-link text-gray-800 hover:text-blue-700 font-semibold">Skills</a>
-                    <a href="{% url "blog:contact" %}" class="nav-link text-gray-800 hover:text-blue-700 font-semibold">Contact</a>
+                    <a href="{% url "blog:contact" %}" class="nav-link text-gray-800 hover:text-blue-700 font-semibold active">Contact</a>
                     <!-- Search form -->
                     <form method="get" action="{% url 'blog:post_search' %}" class="flex items-center space-x-2">
     <input type="text" name="query" placeholder="Search..." style="width: 300px;" class="px-3 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-700">
@@ -50,15 +76,16 @@
         
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
             <div class="flex flex-col">
-                <a href="{% url 'blog:post_list' %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700">Blog</a>
-                <a href="{% url 'blog:portfolio' %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700">Home</a>
-                <a href="{% url 'blog:about' %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700">About</a>
-                <a href="{% url 'blog:skills' %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700">Skills</a>
-                <a href="{% url "blog:contact" %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700">Contact</a>
                 <form method="get" action="{% url 'blog:post_search' %}" class="flex items-center space-x-2 px-4 py-2">
                     <input type="text" name="query" placeholder="Search..." class="flex-1 px-3 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-700">
                     <button type="submit" class="bg-blue-700 text-white px-3 py-1 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700">Search</button>
                 </form>
+                <a href="{% url 'blog:post_list' %}" class=" block px-4 py-2 text-gray-800 hover:text-blue-700">Blog</a>
+                <a href="{% url 'blog:portfolio' %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700">Home</a>
+                <a href="{% url 'blog:about' %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700">About</a>
+                <a href="{% url 'blog:skills' %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700">Skills</a>
+                <a href="{% url "blog:contact" %}" class="block px-4 py-2 text-gray-800 hover:text-blue-700 active">Contact</a>
+            
             </div>
         </div>
     </nav>
@@ -69,6 +96,21 @@
             menu.classList.toggle('hidden');
         });
         
+         window.addEventListener('DOMContentLoaded', (event) => {
+  // Get all the nav links
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  // Loop through the links
+  navLinks.forEach(link => {
+    // If the link's href matches the current page URL
+    if (link.href === window.location.href) {
+      link.classList.add('active'); // Add the active class
+    } else {
+      link.classList.remove('active'); // Remove it from others
+    }
+  });
+});
+
     </script>
 
 {% block content %}{% endblock %}
