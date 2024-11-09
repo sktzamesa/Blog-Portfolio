@@ -189,54 +189,121 @@
 
 
 
-<section id="works" class="projects-section pt-20 py-16 bg-gray-50">
+<section id="works" class="projects-section pt-20 py-16 bg-gray-50"> 
     <h2 class="text-4xl font-extrabold text-center text-white mb-8 tracking-wide">Check out my projects on GitHub!</h2>
     <div class="max-w-4xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project 1 -->
             <div class="project-card relative overflow-hidden hover:shadow-lg transition duration-300" onclick="openModal('modal1')">
-                <img src="{% static "images/e-commerce.png"%}" alt="Project 1 Image" class="w-full h-48 object-cover transition-transform duration-300 transform hover:scale-105">
+                <img src="{% static 'images/e-commerce.png' %}" alt="Project 1 Image" class="w-full h-48 object-cover transition-transform duration-300 transform hover:scale-105">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold text-blue-700">E-Commerce site</h3>
-                    <p class="text-gray-600">A basic functionality of E-Commerce site, Click the image for more info.</p>
+                    <p class="text-gray-600">A basic functionality of E-Commerce site. Click the image for more info.</p>
                 </div>
+            </div>
 
-
-                <div class="project-card relative overflow-hidden hover:shadow-lg transition duration-300" onclick="openModal('modal2')">
-                <img src="{% static 'images/product-management.png' %}" alt="Project 2 Image" class="w-full h-48 object-cover transition-transform duration-300 transform hover:scale-105">
+            <!-- Project 2 -->
+            <div class="project-card relative overflow-hidden hover:shadow-lg transition duration-300" onclick="openModal('modal2')">
+                <img src="{% static 'images/productmanagement.png' %}" alt="Project 2 Image" class="w-full h-48 object-cover transition-transform duration-300 transform hover:scale-105">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold text-blue-700">Product Management System</h3>
-                    <p class="text-gray-600">A Django-based system to manage products. Click the image for more info.</p>
+                    <p class="text-gray-600">A Product Management System using Django. Click the image for more info.</p>
                 </div>
             </div>
-            </div>
 
-            <!-- Modal for Project 1 -->
-            <div id="modal1" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-                <div class="bg-white rounded-lg p-8 relative max-w-md mx-auto text-center">
-                    <img src="{% static "images/e-commerce.png"%}" alt="Project 1 Image" class="w-full h-60 object-cover mb-4">
-                    <h3 class="text-xl font-semibold">E-Commerce Site</h3>
-                    <p class="text-black-600 mb-4">A basic functionality of E-Commerce site</p>
-                    <a href="https://github.com/sktzamesa/e-commerce-website-django" target="_blank" class="text-blue-500 underline">Visit GitHub</a>
-                    <button onclick="closeModal('modal1')" class="absolute top-2 right-2 text-gray-700 text-2xl">&times;</button>
+            <div class="project-card relative overflow-hidden hover:shadow-lg transition duration-300" onclick="openModal('modal3')">
+                <img src="{% static 'images/blogportfolio.png' %}" alt="Project 3 Image" class="w-full h-48 object-cover transition-transform duration-300 transform hover:scale-105">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-blue-700">Blog Portfolio</h3>
+                    <p class="text-gray-600">Blog Portfolio using Django. Click the image for more info.</p>
                 </div>
-
-                
             </div>
-
         </div>
     </div>
+
+    <!-- Modal for Project 1 -->
+<div id="modal1" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 relative max-w-lg mx-auto text-center">
+        <!-- Image -->
+        <img src="{% static 'images/e-commerce.png' %}" alt="Project 1 Image" class="w-full h-60 object-cover rounded-lg mb-6 shadow-md">
+        
+        <!-- Title -->
+        <h3 class="text-3xl font-semibold text-gray-900 mb-6">E-Commerce Site</h3>
+        
+        <!-- Description -->
+        <p class="text-gray-900 mb-6 text-lg leading-relaxed">A basic functionality of an E-Commerce site, designed using Django. The project includes essential features such as product management, cart functionality, and user authentication.</p> 
+        
+        <!-- GitHub Link -->
+        <a href="https://github.com/sktzamesa/e-commerce-website-django" target="_blank" class="text-blue-600 underline font-semibold hover:text-blue-800 transition duration-200">Visit GitHub</a>
+        
+        <!-- Close Button -->
+        <button onclick="closeModal('modal1')" class="absolute top-4 right-4 text-gray-700 text-3xl hover:text-gray-900 transition-colors duration-200">&times;</button>
+    </div>
+</div>
+
+
+<!-- Modal for Project 2 -->
+<div id="modal2" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 relative max-w-lg mx-auto text-center">
+        <!-- Image -->
+        <img src="{% static 'images/productmanagement.png' %}" alt="Project 2 Image" class="w-full h-60 object-cover rounded-lg mb-4 shadow-md">
+        
+        <!-- Title -->
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Product Management System</h3>
+        
+        <!-- Description -->
+        <p class="text-black-700 mb-4 text-lg">A Django-based Product Management System designed to help businesses manage their product inventory, track sales, and generate reports.</p>
+        
+        <!-- GitHub Link -->
+        <a href="https://github.com/sktzamesa/Basic-Manage-Product-System-Django" target="_blank" class="text-blue-600 underline font-semibold hover:text-blue-800 transition duration-200">Visit GitHub</a>
+        
+        <!-- Close Button -->
+        <button onclick="closeModal('modal2')" class="absolute top-2 right-2 text-gray-700 text-2xl hover:text-gray-900 transition-colors duration-200">&times;</button>
+    </div>
+</div>
+
+<div id="modal3" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 relative max-w-lg mx-auto text-center">
+        <!-- Image -->
+        <img src="{% static 'images/blogportfolio.png' %}" alt="Project 2 Image" class="w-full h-60 object-cover rounded-lg mb-4 shadow-md">
+        
+        <!-- Title -->
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Blog portfolio</h3>
+        
+        <!-- Description -->
+        <p class="text-black-700 mb-4 text-lg">A Django-based Blog post portfolio to help people that wants blog with their portfolio.</p>
+        
+        <!-- GitHub Link -->
+        <a href="https://github.com/sktzamesa/product-management-system" target="_blank" class="text-blue-600 underline font-semibold hover:text-blue-800 transition duration-200">Visit GitHub</a>
+        
+        <!-- Close Button -->
+        <button onclick="closeModal('modal3')" class="absolute top-2 right-2 text-gray-700 text-2xl hover:text-gray-900 transition-colors duration-200">&times;</button>
+    </div>
+</div>
+
 </section>
+
 <script type="text/javascript">
     function openModal(modalId) {
-    document.getElementById(modalId).classList.add('show');
-}
+        console.log("Opening modal: " + modalId); // Ensure this is logged in the console
+        // Remove 'hidden' class to show the modal
+        const modal = document.getElementById(modalId);
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex'; // Ensure the modal is displayed using flex (or block if you prefer)
+    }
 
-function closeModal(modalId) {
-    document.getElementById(modalId).classList.remove('show');
-}
-
+    function closeModal(modalId) {
+        console.log("Closing modal: " + modalId); // Ensure this is logged in the console
+        // Add 'hidden' class to hide the modal
+        const modal = document.getElementById(modalId);
+        modal.classList.add('hidden');
+        modal.style.display = 'none'; // Hide modal completely using 'none'
+    }
 </script>
+
+
+
+
 
 
 
